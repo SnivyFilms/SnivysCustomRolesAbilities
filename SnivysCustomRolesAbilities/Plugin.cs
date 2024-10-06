@@ -1,4 +1,5 @@
 ﻿using System;
+using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.CustomRoles;
 using Exiled.CustomRoles.API.Features;
@@ -8,11 +9,12 @@ namespace SnivysCustomRolesAbilities
 {
     public class Plugin : Plugin<Config>
     {
+        public override PluginPriority Priority { get; } = PluginPriority.Higher;
         public static Plugin Instance;
-        public override string Name { get; } = "Snivy's Custom In Round Events";
-        public override string Author { get; } = "Vicious Vikki, with the assistance from Lucid & Jamwolff";
-        public override string Prefix { get; } = "VVEvents";
-        public override Version Version { get; } = new Version(1, 5, 2);
+        public override string Name { get; } = "Snivy's Custom Role Abilities";
+        public override string Author { get; } = "Vicious Vikki";
+        public override string Prefix { get; } = "VVCRAbilities";
+        public override Version Version { get; } = new Version(1, 0, 1);
         public override Version RequiredExiledVersion { get; } = new Version(8, 11, 0);
 
         public override void OnEnabled()

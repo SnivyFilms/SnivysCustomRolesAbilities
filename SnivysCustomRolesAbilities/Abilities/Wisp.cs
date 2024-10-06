@@ -20,9 +20,9 @@ namespace SnivysCustomRolesAbilities.Abilities
         protected override void AbilityAdded(Player player)
         {
             PlayersWithWispEffect.Add(player);
-            Timing.CallDelayed(2f, () =>
+            Timing.CallDelayed(10f, () =>
             {
-                player.EnableEffect(EffectType.Exhausted, 1);
+                player.EnableEffect(EffectType.Exhausted);
                 player.EnableEffect(EffectType.Ghostly); 
                 player.EnableEffect(EffectType.FogControl, 2);
             });

@@ -7,6 +7,7 @@ using Exiled.API.Features.Items;
 using Exiled.CustomRoles.API.Features;
 using InventorySystem;
 using InventorySystem.Items;
+using MEC;
 using PlayerRoles;
 
 namespace SnivysCustomRolesAbilities.Abilities
@@ -37,18 +38,20 @@ namespace SnivysCustomRolesAbilities.Abilities
                      player.Role == RoleTypeId.NtfCaptain || player.Role == RoleTypeId.NtfPrivate ||
                      player.Role == RoleTypeId.NtfSergeant || player.Role == RoleTypeId.NtfSpecialist)
                 player.Role.Set(RoleTypeId.ChaosRifleman, SpawnReason.ForceClass, RoleSpawnFlags.None);
-            
-            player.ClearInventory();
-
-            foreach (Item item in storedInventory)
+            /*Timing.CallDelayed(1f, () =>
             {
-                player.AddItem(item);
-            }
+                player.ClearInventory();
 
-            foreach (KeyValuePair<ItemType, ushort> ammo in ammoCount)
-            {
-                player.Ammo[ammo.Key] = ammo.Value;
-            }
+                foreach (Item item in storedInventory)
+                {
+                    player.AddItem(item);
+                }
+
+                foreach (KeyValuePair<ItemType, ushort> ammo in ammoCount)
+                {
+                    player.Ammo[ammo.Key] = ammo.Value;
+                }
+            });*/
         }
     }
 }
