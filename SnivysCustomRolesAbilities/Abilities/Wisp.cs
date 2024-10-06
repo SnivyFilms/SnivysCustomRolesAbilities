@@ -11,7 +11,7 @@ namespace SnivysCustomRolesAbilities.Abilities
     [CustomAbility]
     public class Wisp : PassiveAbility
     {
-        public override string Name { get; set; } = "MTF Wisp Effects.";
+        public override string Name { get; set; } = "Wisp";
 
         public override string Description { get; set; } = "Enables walking through doors, Fog Control, Reduced Sprint";
         
