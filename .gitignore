@@ -367,5 +367,3 @@ FodyWeavers.xsd
 
 # NuGet
 NuGet.config
-CustomRoles/CustomRoles.csproj
-CustomRoles/packages.config
