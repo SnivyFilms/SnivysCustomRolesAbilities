@@ -40,9 +40,6 @@
         <Reference Include="Assembly-CSharp-firstpass">
           <HintPath>$(EXILED_REFERENCES)\Assembly-CSharp-firstpass.dll</HintPath>
         </Reference>
-        <Reference Include="CommandSystem.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\EXILED-OFFICIAL.8.12.2\lib\net48\CommandSystem.Core.dll</HintPath>
-        </Reference>
         <Reference Include="Exiled.API, Version=8.12.2.0, Culture=neutral, processorArchitecture=Amd64">
           <HintPath>..\packages\EXILED-OFFICIAL.8.12.2\lib\net48\Exiled.API.dll</HintPath>
         </Reference>
@@ -51,9 +48,6 @@
         </Reference>
         <Reference Include="Exiled.Events, Version=8.12.2.0, Culture=neutral, processorArchitecture=Amd64">
           <HintPath>..\packages\EXILED-OFFICIAL.8.12.2\lib\net48\Exiled.Events.dll</HintPath>
-        </Reference>
-        <Reference Include="Exiled.Loader, Version=8.12.2.0, Culture=neutral, processorArchitecture=Amd64">
-          <HintPath>..\packages\EXILED-OFFICIAL.8.12.2\lib\net48\Exiled.Loader.dll</HintPath>
         </Reference>
         <Reference Include="Mirror">
           <HintPath>$(EXILED_REFERENCES)\Mirror.dll</HintPath>
