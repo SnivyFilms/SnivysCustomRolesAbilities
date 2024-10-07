@@ -1,16 +1,9 @@
 ﻿using Exiled.API.Features.Attributes;
 using System.Collections.Generic;
-using System.Linq;
-using Exiled.API.Enums;
 using Exiled.API.Features;
-using Exiled.API.Features.Attributes;
-using Exiled.API.Features.Items;
 using Exiled.CustomRoles.API.Features;
 using Exiled.Events.EventArgs.Player;
-using InventorySystem;
-using InventorySystem.Items;
 using MEC;
-using PlayerRoles;
 using UnityEngine;
 
 namespace SnivysCustomRolesAbilities.Abilities

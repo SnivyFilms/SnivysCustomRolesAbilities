@@ -5,9 +5,6 @@ using Exiled.API.Features;
 using Exiled.API.Features.Attributes;
 using Exiled.API.Features.Items;
 using Exiled.CustomRoles.API.Features;
-using InventorySystem;
-using InventorySystem.Items;
-using MEC;
 using PlayerRoles;
 
 namespace SnivysCustomRolesAbilities.Abilities

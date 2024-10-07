@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using CustomPlayerEffects;
+using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.API.Features.Attributes;
 using Exiled.CustomRoles.API.Features;
@@ -36,7 +36,7 @@ namespace SnivysCustomRolesAbilities.Abilities
             try
             {
                 Log.Debug($"{Name} enabled for {Duration}");
-                player.EnableEffect<Invisible>(Duration);
+                player.EnableEffect(EffectType.Invisible, Duration);
             }
             catch (Exception e)
             {
@@ -59,7 +59,7 @@ namespace SnivysCustomRolesAbilities.Abilities
         protected override void AbilityEnded(Player player)
         {
             Log.Debug($"{Name} ended.");
-            player.DisableEffect<Invisible>();
+            player.DisableEffect(EffectType.Invisible);
         }
 
         private void OnShooting(ShootingEventArgs ev)

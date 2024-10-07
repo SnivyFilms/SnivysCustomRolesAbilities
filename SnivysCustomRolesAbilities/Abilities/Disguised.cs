@@ -1,17 +1,9 @@
 ﻿using Exiled.API.Features.Attributes;
 using System.Collections.Generic;
-using System.Linq;
-using Exiled.API.Enums;
 using Exiled.API.Features;
-using Exiled.API.Features.Attributes;
-using Exiled.API.Features.Items;
 using Exiled.CustomRoles.API.Features;
 using Exiled.Events.EventArgs.Player;
-using InventorySystem;
-using InventorySystem.Items;
-using MEC;
 using PlayerRoles;
-using UnityEngine;
 
 namespace SnivysCustomRolesAbilities.Abilities
 {
@@ -71,7 +63,7 @@ namespace SnivysCustomRolesAbilities.Abilities
             if (PlayersWithDisguisedEffect.Contains(ev.Player))
             {
                 Player target = Player.Get(ev.TargetNetId);
-                if (ev.Player.IsCHI)
+                if (ev.Player.IsNTF)
                 {
                     if (target != null && target.Role == RoleTypeId.ClassD && Check(ev.Player) ||
                         target != null && target.Role == RoleTypeId.ChaosConscript && Check(ev.Player)
@@ -82,7 +74,7 @@ namespace SnivysCustomRolesAbilities.Abilities
                         ev.IsAllowed = false;
                     }
                 }
-                else if (ev.Player.IsNTF)
+                else if (ev.Player.IsCHI)
                 {
                     if (target != null && target.Role == RoleTypeId.Scientist && Check(ev.Player) ||
                         target != null && target.Role == RoleTypeId.NtfCaptain && Check(ev.Player)

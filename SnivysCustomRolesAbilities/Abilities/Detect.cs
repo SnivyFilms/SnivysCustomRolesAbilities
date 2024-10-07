@@ -20,6 +20,8 @@ namespace SnivysCustomRolesAbilities.Abilities
 
         public string message;
 
+        public float DetectRange { get; set; } = 30f;
+
         protected override void AbilityUsed(Player player)
         {
             ActivateDetect(player);
@@ -32,16 +34,35 @@ namespace SnivysCustomRolesAbilities.Abilities
 
             foreach (Player p in Player.List)
             {
-                if (Vector3.Distance(ply.Position, p.Position) <= 30f &&
-                    (p.Role == RoleTypeId.Scientist || p.Role == RoleTypeId.NtfCaptain ||
-                     p.Role == RoleTypeId.NtfPrivate || p.Role == RoleTypeId.NtfSergeant
-                     || p.Role == RoleTypeId.NtfSpecialist || p.Role == RoleTypeId.FacilityGuard ||
-                     p.Role == RoleTypeId.Scp049 || p.Role == RoleTypeId.Scp0492 || p.Role == RoleTypeId.Scp096 ||
-                     p.Role == RoleTypeId.Scp106
-                     || p.Role == RoleTypeId.Scp173 || p.Role == RoleTypeId.Scp939 || p.Role == RoleTypeId.Scp3114 ||
-                     p.Role == RoleTypeId.Tutorial))
+                if (ply.IsCHI)
                 {
-                    detectedPlayers.Add(p);
+                    if (Vector3.Distance(ply.Position, p.Position) <= DetectRange &&
+                        (p.Role == RoleTypeId.Scientist || p.Role == RoleTypeId.NtfCaptain ||
+                         p.Role == RoleTypeId.NtfPrivate || p.Role == RoleTypeId.NtfSergeant
+                         || p.Role == RoleTypeId.NtfSpecialist || p.Role == RoleTypeId.FacilityGuard ||
+                         p.Role == RoleTypeId.Scp049 || p.Role == RoleTypeId.Scp0492 || p.Role == RoleTypeId.Scp096 ||
+                         p.Role == RoleTypeId.Scp106
+                         || p.Role == RoleTypeId.Scp173 || p.Role == RoleTypeId.Scp939 ||
+                         p.Role == RoleTypeId.Scp3114 ||
+                         p.Role == RoleTypeId.Tutorial))
+                    {
+                        detectedPlayers.Add(p);
+                    }
+                }
+                else if (ply.IsNTF)
+                {
+                    if (Vector3.Distance(ply.Position, p.Position) <= DetectRange &&
+                        (p.Role == RoleTypeId.ChaosConscript || p.Role == RoleTypeId.ChaosMarauder ||
+                         p.Role == RoleTypeId.ChaosRepressor || p.Role == RoleTypeId.ChaosRifleman
+                         || p.Role == RoleTypeId.Scientist ||
+                         p.Role == RoleTypeId.Scp049 || p.Role == RoleTypeId.Scp0492 || p.Role == RoleTypeId.Scp096 ||
+                         p.Role == RoleTypeId.Scp106
+                         || p.Role == RoleTypeId.Scp173 || p.Role == RoleTypeId.Scp939 ||
+                         p.Role == RoleTypeId.Scp3114 ||
+                         p.Role == RoleTypeId.Tutorial))
+                    {
+                        detectedPlayers.Add(p);
+                    }
                 }
             }
 
