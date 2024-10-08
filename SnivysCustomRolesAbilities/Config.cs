@@ -15,9 +15,12 @@ namespace SnivysCustomRolesAbilities
         public string EscapeRestricted { get; set; } =
             "You're not allowed to escape normally, you can escape if cuffed though";
 
-        [Description("What the hint says if the player is a disguised for the CI side")]
+        [Description("What should the notification says if the player is a disguised for the CI side")]
         public string DisguisedCi { get; set; } = "That MTF is actually on the CI side";
-        [Description("What the hint says if the player is a disguised for the MTF side")]
+        [Description("What should the notification says if the player is a disguised for the MTF side")]
         public string DisguisedMtf { get; set; } = "That CI is actually on the MTF side";
+
+        [Description("Should the disguised notifcation be a hint? (True = Hint, False = Broadcast)")]
+        public bool DisguisedHintDisplay { get; set; } = true;
     }
 }

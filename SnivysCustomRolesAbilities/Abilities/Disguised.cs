@@ -4,6 +4,7 @@ using Exiled.API.Features;
 using Exiled.CustomRoles.API.Features;
 using Exiled.Events.EventArgs.Player;
 using PlayerRoles;
+using YamlDotNet.Core.Events;
 
 namespace SnivysCustomRolesAbilities.Abilities
 {
@@ -35,25 +36,22 @@ namespace SnivysCustomRolesAbilities.Abilities
                 return;
             if (PlayersWithDisguisedEffect.Contains(ev.Player))
             {
-                if (ev.Player.IsNTF)
+                if (ev.Player.IsNTF && (ev.Attacker.IsCHI || ev.Attacker.Role.Type == RoleTypeId.ClassD))
                 {
-                    if (ev.Attacker.IsCHI || ev.Attacker.Role.Type == RoleTypeId.ClassD)
-                    {
+                    if (Plugin.Instance.Config.DisguisedHintDisplay)
                         ev.Attacker.ShowHint(Plugin.Instance.Config.DisguisedCi, 5);
-                        ev.IsAllowed = false;
-                    }
+                    else
+                        ev.Attacker.Broadcast(new Exiled.API.Features.Broadcast(Plugin.Instance.Config.DisguisedCi, 5));
+                    ev.IsAllowed = false;
                 }
-            }
-            else if (ev.Player.IsCHI)
-            {
-                if (ev.Player.IsCHI)
+                else if (ev.Player.IsCHI && (ev.Attacker.IsNTF || ev.Attacker.Role.Type == RoleTypeId.FacilityGuard || 
+                                             ev.Attacker.Role.Type == RoleTypeId.Scientist))
                 {
-                    if (ev.Attacker.IsNTF || ev.Attacker.Role.Type == RoleTypeId.FacilityGuard ||
-                        ev.Attacker.Role.Type == RoleTypeId.Scientist)
-                    {
+                    if (Plugin.Instance.Config.DisguisedHintDisplay)
                         ev.Attacker.ShowHint(Plugin.Instance.Config.DisguisedMtf, 5);
-                        ev.IsAllowed = false;
-                    }
+                    else
+                        ev.Attacker.Broadcast(new Exiled.API.Features.Broadcast(Plugin.Instance.Config.DisguisedMtf, 5));
+                    ev.IsAllowed = false;
                 }
             }
         }
