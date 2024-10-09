@@ -39,8 +39,9 @@ namespace SnivysCustomRolesAbilities.Abilities
                 byte curIntensity = ev.Attacker.GetEffectIntensity<Scp207>();
                 if (curIntensity < IntensityLimit)
                 {
-                    ev.Attacker.ChangeEffectIntensity<Scp207>((byte)(curIntensity + 1));
-                    ev.Attacker.GetEffect(EffectType.Scp207).Duration = Duration;
+                    //ev.Attacker.ChangeEffectIntensity<Scp207>((byte)(curIntensity + 1));
+                    //ev.Attacker.GetEffect(EffectType.Scp207).Duration = Duration;
+                    ev.Attacker.EnableEffect(EffectType.Scp207, (byte)(curIntensity + 1), Duration);
                 }
             }
         }
