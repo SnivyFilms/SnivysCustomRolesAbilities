@@ -1,4 +1,5 @@
-﻿using Exiled.API.Features.Attributes;
+﻿using System.ComponentModel;
+using Exiled.API.Features.Attributes;
 using Exiled.API.Features.Items;
 using Exiled.CustomRoles.API.Features;
 using Exiled.Events.EventArgs.Player;
@@ -14,7 +15,7 @@ namespace SnivysCustomRolesAbilities.Abilities
 
         public override string Description { get; set; } = "Causes the player to explode upon death.";
 
-         [Description("How long should the fuse be?")]
+        [Description("How long should the fuse be?")]
         public float EnsnareDuration { get; set; } = 3f;
 
         protected override void SubscribeEvents()

@@ -35,20 +35,6 @@ namespace SnivysCustomRolesAbilities.Abilities
                      player.Role == RoleTypeId.NtfCaptain || player.Role == RoleTypeId.NtfPrivate ||
                      player.Role == RoleTypeId.NtfSergeant || player.Role == RoleTypeId.NtfSpecialist)
                 player.Role.Set(RoleTypeId.ChaosRifleman, SpawnReason.ForceClass, RoleSpawnFlags.None);
-            /*Timing.CallDelayed(1f, () =>
-            {
-                player.ClearInventory();
-
-                foreach (Item item in storedInventory)
-                {
-                    player.AddItem(item);
-                }
-
-                foreach (KeyValuePair<ItemType, ushort> ammo in ammoCount)
-                {
-                    player.Ammo[ammo.Key] = ammo.Value;
-                }
-            });*/
         }
     }
 }

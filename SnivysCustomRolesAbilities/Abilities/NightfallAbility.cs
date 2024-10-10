@@ -13,6 +13,20 @@ namespace SnivysCustomRolesAbilities.Abilities
 
         public override string Description { get; set; } =
             "Handles everything related to Nightfall";
+
+        public List<ItemType> RestrictedItems { get; set; } = new List<ItemType>()
+        {
+            ItemType.Medkit,
+            ItemType.Painkillers,
+            ItemType.SCP500,
+            ItemType.KeycardO5,
+            ItemType.GunE11SR,
+            ItemType.GunCrossvec,
+            ItemType.GunFSP9,
+            ItemType.GunLogicer,
+            ItemType.GunAK,
+            ItemType.GunShotgun
+        };
         public List<Player> PlayersWithNightfallEffect = new List<Player>();
         
         protected override void AbilityAdded(Player player)
@@ -32,63 +46,19 @@ namespace SnivysCustomRolesAbilities.Abilities
 
         private void OnUsingMedicalItem(UsingItemEventArgs ev)
         {
-            if (!PlayersWithNightfallEffect.Contains(ev.Player))
-                return;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.Medkit)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.Painkillers)
+            if (PlayersWithNightfallEffect.Contains(ev.Player) && RestrictedItems.Contains(ev.Item.Type))
                 ev.IsAllowed = false;
         }
 
         private void OnPickingUpItem(PickingUpItemEventArgs ev)
         {
-            if (!PlayersWithNightfallEffect.Contains(ev.Player))
-                return;
-            if (Check(ev.Player) && ev.Pickup.Type == ItemType.SCP500)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Pickup.Type == ItemType.Medkit)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Pickup.Type == ItemType.Painkillers)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Pickup.Type == ItemType.KeycardO5)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Pickup.Type == ItemType.GunE11SR)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Pickup.Type == ItemType.GunCrossvec)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Pickup.Type == ItemType.GunFSP9)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Pickup.Type == ItemType.GunLogicer)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Pickup.Type == ItemType.GunAK)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Pickup.Type == ItemType.GunShotgun)
+            if (PlayersWithNightfallEffect.Contains(ev.Player) && RestrictedItems.Contains(ev.Pickup.Type))
                 ev.IsAllowed = false;
         }
 
         private void OnDroppingItem(DroppingItemEventArgs ev)
         {
-            if (!PlayersWithNightfallEffect.Contains(ev.Player))
-                return;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.SCP500)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.Medkit)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.Painkillers)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.KeycardO5)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.GunE11SR)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.GunCrossvec)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.GunFSP9)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.GunLogicer)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.GunAK)
-                ev.IsAllowed = false;
-            if (Check(ev.Player) && ev.Item.Type == ItemType.GunShotgun)
+            if (PlayersWithNightfallEffect.Contains(ev.Player) && RestrictedItems.Contains(ev.Item.Type))
                 ev.IsAllowed = false;
         }
     }

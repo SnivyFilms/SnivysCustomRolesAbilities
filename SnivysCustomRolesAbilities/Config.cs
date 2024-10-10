@@ -11,10 +11,6 @@ namespace SnivysCustomRolesAbilities
         [Description("Debug Printouts? *Attention this WILL flood your console with debug statements*")]
         public bool Debug { get; set; } = false;
 
-        [Description("What does the hint say if the player is not allowed to escape")]
-        public string EscapeRestricted { get; set; } =
-            "You're not allowed to escape normally, you can escape if cuffed though";
-
         [Description("What should the notification says if the player is a disguised for the CI side")]
         public string DisguisedCi { get; set; } = "That MTF is actually on the CI side";
         [Description("What should the notification says if the player is a disguised for the MTF side")]

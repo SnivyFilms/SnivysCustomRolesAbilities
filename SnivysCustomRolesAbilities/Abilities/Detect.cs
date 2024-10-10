@@ -22,6 +22,29 @@ namespace SnivysCustomRolesAbilities.Abilities
 
         public float DetectRange { get; set; } = 30f;
 
+        public Dictionary<RoleTypeId, string> RoleNames { get; set; } = new Dictionary<RoleTypeId, string>()
+        {
+            {RoleTypeId.Scientist, "Scientist"},
+            {RoleTypeId.NtfCaptain, "MTF Captain"},
+            {RoleTypeId.NtfPrivate, "MTF Private"},
+            {RoleTypeId.NtfSergeant, "MTF Sergeant"},
+            {RoleTypeId.NtfSpecialist, "MTF Specialist"},
+            {RoleTypeId.FacilityGuard, "Facility Guard"},
+            {RoleTypeId.ChaosConscript, "Chaos Conscript"},
+            {RoleTypeId.ChaosMarauder, "Chaos Marauder"},
+            {RoleTypeId.ChaosRepressor, "Chaos Repressor"},
+            {RoleTypeId.ChaosRifleman, "Chaos Rifleman"},
+            {RoleTypeId.ClassD, "Class D"},
+            {RoleTypeId.Scp049, "SCP-049"},
+            {RoleTypeId.Scp0492, "SCP-049-2"},
+            {RoleTypeId.Scp079, "SCP-079"},
+            {RoleTypeId.Scp096, "SCP-096"},
+            {RoleTypeId.Scp106, "SCP-106"},
+            {RoleTypeId.Scp173, "SCP-173"},
+            {RoleTypeId.Scp939, "SCP-939"},
+            {RoleTypeId.Scp3114, "SCP-3114"}
+        };
+
         protected override void AbilityUsed(Player player)
         {
             ActivateDetect(player);
@@ -37,41 +60,36 @@ namespace SnivysCustomRolesAbilities.Abilities
                 if (ply.IsCHI)
                 {
                     if (Vector3.Distance(ply.Position, p.Position) <= DetectRange &&
-                        (p.Role == RoleTypeId.Scientist || p.Role == RoleTypeId.NtfCaptain ||
-                         p.Role == RoleTypeId.NtfPrivate || p.Role == RoleTypeId.NtfSergeant
-                         || p.Role == RoleTypeId.NtfSpecialist || p.Role == RoleTypeId.FacilityGuard ||
-                         p.Role == RoleTypeId.Scp049 || p.Role == RoleTypeId.Scp0492 || p.Role == RoleTypeId.Scp096 ||
-                         p.Role == RoleTypeId.Scp106
-                         || p.Role == RoleTypeId.Scp173 || p.Role == RoleTypeId.Scp939 ||
-                         p.Role == RoleTypeId.Scp3114 ||
-                         p.Role == RoleTypeId.Tutorial))
-                    {
+                        (p.Role == RoleTypeId.Scientist || p.IsNTF || p.Role == RoleTypeId.FacilityGuard ||
+                         p.IsScp || p.Role == RoleTypeId.Tutorial))
                         detectedPlayers.Add(p);
-                    }
                 }
                 else if (ply.IsNTF)
                 {
                     if (Vector3.Distance(ply.Position, p.Position) <= DetectRange &&
-                        (p.Role == RoleTypeId.ChaosConscript || p.Role == RoleTypeId.ChaosMarauder ||
-                         p.Role == RoleTypeId.ChaosRepressor || p.Role == RoleTypeId.ChaosRifleman
-                         || p.Role == RoleTypeId.Scientist ||
-                         p.Role == RoleTypeId.Scp049 || p.Role == RoleTypeId.Scp0492 || p.Role == RoleTypeId.Scp096 ||
-                         p.Role == RoleTypeId.Scp106
-                         || p.Role == RoleTypeId.Scp173 || p.Role == RoleTypeId.Scp939 ||
-                         p.Role == RoleTypeId.Scp3114 ||
-                         p.Role == RoleTypeId.Tutorial))
-                    {
+                        (p.IsCHI || p.Role == RoleTypeId.ClassD || p.IsScp || p.Role == RoleTypeId.Tutorial))
                         detectedPlayers.Add(p);
-                    }
+                }
+                else
+                {
+                    if (Vector3.Distance(ply.Position, p.Position) <= DetectRange &&
+                        (p.IsCHI || p.IsNTF || p.Role == RoleTypeId.ClassD || p.Role == RoleTypeId.Scientist))
+                        detectedPlayers.Add(p);
                 }
             }
 
             if (detectedPlayers.Count > 0)
             {
-                message = "Detected Targets Near By: \n";
                 foreach (Player detectedPlayer in detectedPlayers)
                 {
-                    message += $"{GetRoleName(detectedPlayer.Role)}\n";
+                    if (RoleNames.TryGetValue(detectedPlayer.Role, out string roleName))
+                    {
+                        message += $"{roleName}\n";
+                    }
+                    else
+                    {
+                        message += "Unknown Role\n";
+                    }
                 }
             }
             else
@@ -83,43 +101,6 @@ namespace SnivysCustomRolesAbilities.Abilities
         public void DisplayHint(Player pl)
         {
             pl.ShowHint(message, 10f);
-        }
-
-        private string GetRoleName(RoleTypeId role)
-        {
-            switch (role)
-            {
-                case RoleTypeId.Scientist:
-                    return "Scientist";
-                case RoleTypeId.NtfCaptain:
-                    return "MTF Captain";
-                case RoleTypeId.NtfPrivate:
-                    return "MTF Private";
-                case RoleTypeId.NtfSergeant:
-                    return "MTF Sergeant";
-                case RoleTypeId.NtfSpecialist:
-                    return "MTF Specialist";
-                case RoleTypeId.FacilityGuard:
-                    return "Facility Guard";
-                case RoleTypeId.Scp049:
-                    return "SCP-049";
-                case RoleTypeId.Scp0492:
-                    return "SCP-049-2";
-                case RoleTypeId.Scp096:
-                    return "SCP-096";
-                case RoleTypeId.Scp106:
-                    return "SCP-106";
-                case RoleTypeId.Scp173:
-                    return "SCP-173";
-                case RoleTypeId.Scp939:
-                    return "SCP-939";
-                case RoleTypeId.Scp3114:
-                    return "SCP-3114";
-                case RoleTypeId.Tutorial:
-                    return "Serpents Hand";
-                default:
-                    return "Unknown Role";
-            }
         }
     }
 }

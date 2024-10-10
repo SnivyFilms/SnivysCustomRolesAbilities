@@ -14,6 +14,10 @@ namespace SnivysCustomRolesAbilities.Abilities
         public override string Description { get; set; } =
             "Prevents players from escaping regularly (can still escape while detained)";
         public List<Player> PlayersWithRestrictedEscapeEffect = new List<Player>();
+
+        public string EscapeText { get; set; } = "You're unable to escape unless you're detained";
+        public float EscapeTextTime { get; set; } = 5;
+        public bool UseHints { get; set; } = true;
         
         protected override void AbilityAdded(Player player)
         {
@@ -28,12 +32,14 @@ namespace SnivysCustomRolesAbilities.Abilities
 
         private void OnEscaping(EscapingEventArgs ev)
         {
-            if (PlayersWithRestrictedEscapeEffect.Contains(ev.Player))
-                if (!ev.Player.IsCuffed)
-                {
-                    ev.IsAllowed = false;
-                    ev.Player.ShowHint(Plugin.Instance.Config.EscapeRestricted, 5);
-                }
+            if (PlayersWithRestrictedEscapeEffect.Contains(ev.Player) && !ev.Player.IsCuffed)
+            {
+                ev.IsAllowed = false;
+                if (UseHints)
+                    ev.Player.ShowHint(EscapeText, EscapeTextTime);
+                else
+                    ev.Player.Broadcast(new Exiled.API.Features.Broadcast(EscapeText, (ushort)EscapeTextTime));
+            }
         }
     }
 }

@@ -14,6 +14,19 @@ namespace SnivysCustomRolesAbilities.Abilities
         public override string Name { get; set; } = "Wisp";
 
         public override string Description { get; set; } = "Enables walking through doors, Fog Control, Reduced Sprint";
+
+        public Dictionary<EffectType, int> EffectsToApply { get; set; } = new Dictionary<EffectType, int>()
+        {
+            {EffectType.Exhausted, 1},
+            {EffectType.Ghostly, 1},
+            {EffectType.FogControl, 2},
+        };
+
+        public List<ItemType> RestrictedItems { get; set; } = new List<ItemType>()
+        {
+            ItemType.Adrenaline,
+            ItemType.SCP500
+        };
         
         public List<Player> PlayersWithWispEffect = new List<Player>();
         
@@ -22,9 +35,10 @@ namespace SnivysCustomRolesAbilities.Abilities
             PlayersWithWispEffect.Add(player);
             Timing.CallDelayed(10f, () =>
             {
-                player.EnableEffect(EffectType.Exhausted);
-                player.EnableEffect(EffectType.Ghostly); 
-                player.EnableEffect(EffectType.FogControl, 2);
+                foreach (var effect in EffectsToApply)
+                {
+                    player.EnableEffect(effect.Key, effect.Value);
+                }
             });
             Exiled.Events.Handlers.Player.UsingItem += OnUsingItem;
             Exiled.Events.Handlers.Player.PickingUpItem += OnPickingUpItem;
@@ -33,24 +47,23 @@ namespace SnivysCustomRolesAbilities.Abilities
         protected override void AbilityRemoved(Player player)
         {
             PlayersWithWispEffect.Remove(player);
-            player.DisableEffect(EffectType.Ghostly);
-            player.DisableEffect(EffectType.FogControl);
-            player.DisableEffect(EffectType.Exhausted);
+            foreach (var effect in EffectsToApply)
+            {
+                player.DisableEffect(effect.Key);
+            }
             Exiled.Events.Handlers.Player.UsingItem -= OnUsingItem;
             Exiled.Events.Handlers.Player.PickingUpItem -= OnPickingUpItem;
         }
         private void OnUsingItem(UsingItemEventArgs ev)
         {
-            if (PlayersWithWispEffect.Contains(ev.Player))
-                if (ev.Item.Type == ItemType.Adrenaline)
-                    ev.IsAllowed = false;
+            if (PlayersWithWispEffect.Contains(ev.Player) && RestrictedItems != null && RestrictedItems.Contains(ev.Item.Type))
+                ev.IsAllowed = false;
         }
 
         private void OnPickingUpItem(PickingUpItemEventArgs ev)
         {
-            if (PlayersWithWispEffect.Contains(ev.Player))
-                if (ev.Pickup.Type == ItemType.Adrenaline)
-                    ev.IsAllowed = false;
+            if (PlayersWithWispEffect.Contains(ev.Player) && RestrictedItems != null && RestrictedItems.Contains(ev.Pickup.Type))
+                ev.IsAllowed = false;
         }
     }
 }

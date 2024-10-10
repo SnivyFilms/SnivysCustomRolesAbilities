@@ -63,26 +63,13 @@ namespace SnivysCustomRolesAbilities.Abilities
                 Player target = Player.Get(ev.TargetNetId);
                 if (ev.Player.IsNTF)
                 {
-                    if (target != null && target.Role == RoleTypeId.ClassD && Check(ev.Player) ||
-                        target != null && target.Role == RoleTypeId.ChaosConscript && Check(ev.Player)
-                        || target != null && target.Role == RoleTypeId.ChaosRepressor && Check(ev.Player) ||
-                        target != null && target.Role == RoleTypeId.ChaosMarauder && Check(ev.Player)
-                        || target != null && target.Role == RoleTypeId.ChaosRifleman && Check(ev.Player))
-                    {
+                    if (target != null && Check(ev.Player) && (target.Role == RoleTypeId.ClassD || target.IsCHI))
                         ev.IsAllowed = false;
-                    }
                 }
                 else if (ev.Player.IsCHI)
                 {
-                    if (target != null && target.Role == RoleTypeId.Scientist && Check(ev.Player) ||
-                        target != null && target.Role == RoleTypeId.NtfCaptain && Check(ev.Player)
-                        || target != null && target.Role == RoleTypeId.NtfPrivate && Check(ev.Player) ||
-                        target != null && target.Role == RoleTypeId.NtfSergeant && Check(ev.Player)
-                        || target != null && target.Role == RoleTypeId.NtfSergeant && Check(ev.Player) ||
-                        target != null && target.Role == RoleTypeId.FacilityGuard && Check(ev.Player))
-                    {
+                    if (target != null && Check(ev.Player) && (target.Role == RoleTypeId.Scientist || target.IsNTF || target.Role == RoleTypeId.FacilityGuard))
                         ev.IsAllowed = false;
-                    }
                 }
             }
         }
