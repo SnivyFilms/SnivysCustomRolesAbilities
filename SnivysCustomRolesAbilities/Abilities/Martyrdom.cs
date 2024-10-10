@@ -16,7 +16,7 @@ namespace SnivysCustomRolesAbilities.Abilities
         public override string Description { get; set; } = "Causes the player to explode upon death.";
 
         [Description("How long should the fuse be?")]
-        public float EnsnareDuration { get; set; } = 3f;
+        public float ExplosiveFuse { get; set; } = 3f;
 
         protected override void SubscribeEvents()
         {
@@ -33,7 +33,11 @@ namespace SnivysCustomRolesAbilities.Abilities
         private void OnDying(DyingEventArgs ev)
         {
             if (Check(ev.Player))
-                ((ExplosiveGrenade)Item.Create(ItemType.GrenadeHE)).SpawnActive(ev.Player.Position, ev.Player);
+            {
+                ExplosiveGrenade grenade = (ExplosiveGrenade)Item.Create(ItemType.GrenadeHE);
+                grenade.FuseTime = ExplosiveFuse;
+                grenade.SpawnActive(ev.Player.Position);
+            }
         }
     }
 }
