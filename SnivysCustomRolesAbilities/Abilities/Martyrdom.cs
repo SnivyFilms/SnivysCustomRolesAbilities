@@ -14,6 +14,9 @@ namespace SnivysCustomRolesAbilities.Abilities
 
         public override string Description { get; set; } = "Causes the player to explode upon death.";
 
+         [Description("How long should the fuse be?")]
+        public float EnsnareDuration { get; set; } = 3f;
+
         protected override void SubscribeEvents()
         {
             Player.Dying += OnDying;
