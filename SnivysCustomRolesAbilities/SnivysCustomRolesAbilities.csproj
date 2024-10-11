@@ -97,6 +97,7 @@
         <Compile Include="Abilities\Disguised.cs" />
         <Compile Include="Abilities\DwarfAbility.cs" />
         <Compile Include="Abilities\Flipped.cs" />
+        <Compile Include="Abilities\GivingCandyAbility.cs" />
         <Compile Include="Abilities\HealingMist.cs" />
         <Compile Include="Abilities\HealOnKill.cs" />
         <Compile Include="Abilities\Martyrdom.cs" />
