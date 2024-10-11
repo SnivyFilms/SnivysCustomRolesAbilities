@@ -19,7 +19,7 @@ namespace SnivysCustomRolesAbilities.Abilities
         {
             {EffectType.Exhausted, 1},
             {EffectType.Ghostly, 1},
-            {EffectType.FogControl, 2},
+            {EffectType.FogControl, 5},
         };
 
         public List<ItemType> RestrictedItems { get; set; } = new List<ItemType>()
