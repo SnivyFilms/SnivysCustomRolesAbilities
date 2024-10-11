@@ -15,7 +15,7 @@ namespace SnivysCustomRolesAbilities.Abilities
 
         public override string Description { get; set; } = "Enables walking through doors, Fog Control, Reduced Sprint";
 
-        public Dictionary<EffectType, int> EffectsToApply { get; set; } = new Dictionary<EffectType, int>()
+        public Dictionary<EffectType, byte> EffectsToApply { get; set; } = new Dictionary<EffectType, byte>()
         {
             {EffectType.Exhausted, 1},
             {EffectType.Ghostly, 1},
@@ -37,7 +37,7 @@ namespace SnivysCustomRolesAbilities.Abilities
             {
                 foreach (var effect in EffectsToApply)
                 {
-                    player.EnableEffect(effect.Key, effect.Value);
+                    player.EnableEffect(effect.Key, effect.Value, 0);
                 }
             });
             Exiled.Events.Handlers.Player.UsingItem += OnUsingItem;
