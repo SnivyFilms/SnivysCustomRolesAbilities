@@ -17,6 +17,7 @@ Detect | Detect | Active Ability | Detects any hostiles of the Chaos Insurgency 
 Disguised | Disguised | Passive Ability | This handles all things related to being disguised, such as preventing accidental friendly fire
 Dwarf Ability | DwarfAbility | Passive Ability | This handles everything in regards to being a dwarf, size, stamina usage, and some item restrictions
 Flipped Ability | Flipped | Passive Ability | This handles everything in regards to being vertically flipped
+Giving Candy Ability | GivingCandyAbility | Passive Ability | Gives candy that's listed
 Healing Mist | HealingMist | Active Ability | Activates a short term healing AOE effect
 Heal on Kill | Heal on Kill | Passive Ability | Heals on kill, hopefully self explainitory on what that does
 Martyrdom | Martyrdom | Passive Ability | Explosive death
