@@ -20,21 +20,6 @@ namespace SnivysCustomRolesAbilities
         public override void OnEnabled()
         {
             CustomAbility.RegisterAbilities();
-            /*ActiveCamo.RegisterAbilities();
-            ChargeAbility.RegisterAbilities();
-            Detect.RegisterAbilities();
-            Disguised.RegisterAbilities();
-            DwarfAbility.RegisterAbilities();
-            Flipped.RegisterAbilities();
-            HealingMist.RegisterAbilities();
-            HealOnKill.RegisterAbilities();
-            Martyrdom.RegisterAbilities();
-            MoveSpeedReduction.RegisterAbilities();
-            ReactiveHume.RegisterAbilities();
-            RemoveDisguise.RegisterAbilities();
-            RestrictedEscape.RegisterAbilities();
-            SpeedOnKill.RegisterAbilities();
-            Wisp.RegisterAbilities();*/
             Instance = this;
             base.OnEnabled();
         }

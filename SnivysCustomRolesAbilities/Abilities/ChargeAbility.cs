@@ -15,9 +15,9 @@ namespace SnivysCustomRolesAbilities.Abilities
     [CustomAbility]
     public class ChargeAbility : ActiveAbility
     {
-         public override string Name { get; set; } = "Charge";
+        public override string Name { get; set; } = "Charge";
          
-         public override string Description { get; set; } = "Charges towards the target location.";
+        public override string Description { get; set; } = "Charges towards the target location.";
 
         public override float Duration { get; set; } = 0f;
 
