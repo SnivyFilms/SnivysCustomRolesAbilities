@@ -20,7 +20,7 @@ Dwarf Ability | DwarfAbility | Passive Ability | This handles everything in rega
 Flipped Ability | Flipped | Passive Ability | This handles everything in regards to being vertically flipped
 Giving Candy Ability | GivingCandyAbility | Passive Ability | Gives candy that's listed at spawn
 Healing Mist | HealingMist | Active Ability | Activates a short term healing AOE effect
-Heal on Kill | Heal on Kill | Passive Ability | Heals on kill, hopefully self explainitory on what that does
+Heal on Kill | HealOnKill | Passive Ability | Heals on kill, hopefully self explainitory on what that does
 Martyrdom | Martyrdom | Passive Ability | Explosive death
 Reduced Movement Speed | MoveSpeedReduction | Passive Ability | Makes the player moves slower
 Reactive Hume Shield | ReactiveHume | Passive Ability | A Hume Shield that builds up, that reduces incoming damage
