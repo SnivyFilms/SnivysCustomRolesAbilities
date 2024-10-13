@@ -95,6 +95,7 @@
         <Compile Include="Abilities\ChargeAbility.cs" />
         <Compile Include="Abilities\Detect.cs" />
         <Compile Include="Abilities\Disguised.cs" />
+        <Compile Include="Abilities\DoorPicking.cs" />
         <Compile Include="Abilities\DwarfAbility.cs" />
         <Compile Include="Abilities\Flipped.cs" />
         <Compile Include="Abilities\GivingCandyAbility.cs" />
@@ -102,10 +103,10 @@
         <Compile Include="Abilities\HealOnKill.cs" />
         <Compile Include="Abilities\Martyrdom.cs" />
         <Compile Include="Abilities\MoveSpeedReduction.cs" />
-        <Compile Include="Abilities\NightfallAbility.cs" />
         <Compile Include="Abilities\ReactiveHume.cs" />
         <Compile Include="Abilities\RemoveDisguise.cs" />
         <Compile Include="Abilities\RestrictedEscape.cs" />
+        <Compile Include="Abilities\RestrictedItems.cs" />
         <Compile Include="Abilities\SpeedOnKill.cs" />
         <Compile Include="Abilities\Wisp.cs" />
         <Compile Include="Config.cs" />

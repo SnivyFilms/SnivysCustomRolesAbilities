@@ -15,6 +15,7 @@ Active Camo | ActiveCammo | Active Ability | For a set amount of time, allows th
 Charge | ChargeAbility | Active Ability | Charges towards a location.
 Detect | Detect | Active Ability | Detects any hostiles of the Chaos Insurgency nearby
 Disguised | Disguised | Passive Ability | This handles all things related to being disguised, such as preventing accidental friendly fire
+Door Picking Ability | DoorPicking | Active Ability | When activated, the player is able to open a door
 Dwarf Ability | DwarfAbility | Passive Ability | This handles everything in regards to being a dwarf, size, stamina usage, and some item restrictions
 Flipped Ability | Flipped | Passive Ability | This handles everything in regards to being vertically flipped
 Giving Candy Ability | GivingCandyAbility | Passive Ability | Gives candy that's listed at spawn
@@ -22,9 +23,9 @@ Healing Mist | HealingMist | Active Ability | Activates a short term healing AOE
 Heal on Kill | Heal on Kill | Passive Ability | Heals on kill, hopefully self explainitory on what that does
 Martyrdom | Martyrdom | Passive Ability | Explosive death
 Reduced Movement Speed | MoveSpeedReduction | Passive Ability | Makes the player moves slower
-NightfallAbility | NightfallAbility | Passive Ability | This handles everything for one custom role, Nightfall, where item pickup, droppage, and usage is limited
 Reactive Hume Shield | ReactiveHume | Passive Ability | A Hume Shield that builds up, that reduces incoming damage
 Remove Disguise | Remove Disguise | Active Ability | The ability to remove their disguise, I.E. If MTF, become CI, and vise versa
 Restricted Escape | RestrictedEscape | Passive Ability | This just restricts player escapes for custom roles that has this ability
+Restricted Items | RestrictedItem | Passive Ability | This allows a specific set of restricted items. This is usually complemented with other abilities
 Speed On Kill | SpeedOnKill | Passive Ability | Gives a speed boost on kill
 Wisp | Wisp | Passive Ability | Gives the ability to go through doors, but at the cost of not being able to see as far and a reduced sprint time
