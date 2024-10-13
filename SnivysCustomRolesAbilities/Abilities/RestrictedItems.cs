@@ -11,12 +11,8 @@ namespace SnivysCustomRolesAbilities.Abilities
     {
         public override string Name { get; set; } = "Restricted Items";
         public override string Description { get; set; } = "Handles restricted items";
-        
-        public List<ItemType> RestrictedItemList { get; set; } = new List<ItemType>()
-        {
-            ItemType.Adrenaline,
-            ItemType.SCP500
-        };
+
+        public List<ItemType> RestrictedItemList { get; set; } = new List<ItemType>();
         public List<Player> PlayersWithRestrictedItemsEffect = new List<Player>();
         public bool RestrictUsingItems { get; set; } = true;
         public bool RestrictPickingUpItems { get; set; } = true;
