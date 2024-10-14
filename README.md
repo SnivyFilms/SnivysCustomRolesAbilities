@@ -24,7 +24,7 @@ Heal on Kill | HealOnKill | Passive Ability | Heals on kill, hopefully self expl
 Martyrdom | Martyrdom | Passive Ability | Explosive death
 Reduced Movement Speed | MoveSpeedReduction | Passive Ability | Makes the player moves slower
 Reactive Hume Shield | ReactiveHume | Passive Ability | A Hume Shield that builds up, that reduces incoming damage
-Remove Disguise | Remove Disguise | Active Ability | The ability to remove their disguise, I.E. If MTF, become CI, and vise versa
+Remove Disguise | RemoveDisguise | Active Ability | The ability to remove their disguise, I.E. If MTF, become CI, and vise versa
 Restricted Escape | RestrictedEscape | Passive Ability | This just restricts player escapes for custom roles that has this ability
 Restricted Items | RestrictedItem | Passive Ability | This allows a specific set of restricted items. This is usually complemented with other abilities
 Speed On Kill | SpeedOnKill | Passive Ability | Gives a speed boost on kill
