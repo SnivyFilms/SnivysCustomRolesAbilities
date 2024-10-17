@@ -31,3 +31,5 @@ Restricted Escape | RestrictedEscape | Passive Ability | This just restricts pla
 Restricted Items | RestrictedItem | Passive Ability | This allows a specific set of restricted items. This is usually complemented with other abilities
 Speed On Kill | SpeedOnKill | Passive Ability | Gives a speed boost on kill
 Wisp | Wisp | Passive Ability | Gives the ability to go through doors, but at the cost of not being able to see as far and a reduced sprint time
+
+This is techincally a plugin, not a dependency, as there is some functions you can configure. As such this goes in Exiled/Plugins, not Exiled/Plugins/Dependencies
