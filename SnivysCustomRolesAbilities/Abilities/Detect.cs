@@ -2,6 +2,7 @@
 using Exiled.API.Features;
 using Exiled.API.Features.Attributes;
 using Exiled.CustomRoles.API.Features;
+using MEC;
 using PlayerRoles;
 using UnityEngine;
 
@@ -100,7 +101,10 @@ namespace SnivysCustomRolesAbilities.Abilities
 
         public void DisplayHint(Player pl)
         {
-            pl.ShowHint(message, 10f);
+            Timing.CallDelayed(0.5f, () =>
+            {
+                pl.ShowHint(message, 10f);
+            });
         }
     }
 }
