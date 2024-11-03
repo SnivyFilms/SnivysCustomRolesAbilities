@@ -1,10 +1,13 @@
 ﻿using System;
 using Exiled.API.Features.Attributes;
 using System.Collections.Generic;
+using System.Linq;
 using Exiled.API.Features;
+using Exiled.API.Features.Items;
 using Exiled.CustomRoles;
 using Exiled.CustomRoles.API.Features;
 using Exiled.Events.EventArgs.Player;
+using MEC;
 
 namespace SnivysCustomRolesAbilities.Abilities
 {
@@ -20,6 +23,7 @@ namespace SnivysCustomRolesAbilities.Abilities
         public String CuffedEscapeCustomRole { get; set; } = String.Empty;
         public bool AllowUncuffedCustomRoleChange { get; set; } = true;
         public bool AllowCuffedCustomRoleChange { get; set; } = true;
+        public bool SaveInventory { get; set; } = true;
 
         
         protected override void AbilityAdded(Player player)
@@ -37,15 +41,31 @@ namespace SnivysCustomRolesAbilities.Abilities
         {
             if (!PlayersWithCustomRoleEscape.Contains(ev.Player))
                 return;
+            List<Item> storedInventory = ev.Player.Items.ToList();
+            
             if (ev.Player.IsCuffed && AllowCuffedCustomRoleChange && CuffedEscapeCustomRole != String.Empty)
             {
                 ev.IsAllowed = false;
                 CustomRole.Get(CuffedEscapeCustomRole).AddRole(ev.Player);
+                storedInventory.Clear();
             }
             else if (AllowUncuffedCustomRoleChange && UncuffedEscapeCustomRole != String.Empty)
             {
                 ev.IsAllowed = false;
                 CustomRole.Get(UncuffedEscapeCustomRole).AddRole(ev.Player);
+                if (SaveInventory)
+                {
+                    Timing.CallDelayed(1f, () =>
+                    {
+                        foreach (Item item in storedInventory)
+                        {
+                            item.CreatePickup(ev.Player.Position);
+                        }
+                        storedInventory.Clear();
+                    });
+                }
+                else
+                    storedInventory.Clear();
             }
         }
     }
