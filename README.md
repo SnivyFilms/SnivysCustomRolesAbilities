@@ -14,6 +14,7 @@ Below is a list of every ability (currently) with a short discription of what it
 Custom Ability | AbilityName | Ability Type | Description
 :---: | :---: | :---: | :------
 Active Camo | ActiveCamo | Active Ability | For a set amount of time, allows the player to go invisible unless they fire their weapon, opening/closing doors will reapply the effect
+Custom Role Escape | CustomRoleEscape | Passive Ability | When a player that has this ability tries to escape, you can give them a set custom role
 Charge | ChargeAbility | Active Ability | Charges towards a location.
 Detect | Detect | Active Ability | Detects any hostiles of the Chaos Insurgency nearby
 Disguised | Disguised | Passive Ability | This handles all things related to being disguised, such as preventing accidental friendly fire
