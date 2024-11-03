@@ -78,6 +78,7 @@ namespace SnivysCustomRolesAbilities.Abilities
                 else
                     storedInventory.Clear();
             }
+            PlayersWithCustomRoleEscape.Remove(ev.Player);
         }
 
         private void OnRoleChange(ChangingRoleEventArgs ev)
@@ -109,6 +110,7 @@ namespace SnivysCustomRolesAbilities.Abilities
                 CustomRole.Get(CuffedEscapeCustomRole).AddRole(ev.Player);
                 storedInventory.Clear();
             }
+            PlayersWithCustomRoleEscape.Remove(ev.Player);
         }
     }
 }
