@@ -93,6 +93,7 @@
     <ItemGroup>
         <Compile Include="Abilities\ActiveCamo.cs" />
         <Compile Include="Abilities\ChargeAbility.cs" />
+        <Compile Include="Abilities\CustomRoleEscape.cs" />
         <Compile Include="Abilities\Detect.cs" />
         <Compile Include="Abilities\Disguised.cs" />
         <Compile Include="Abilities\DoorPicking.cs" />
