@@ -6,7 +6,6 @@ using Exiled.API.Features.Attributes;
 using Exiled.CustomRoles.API.Features;
 using Exiled.Events.EventArgs.Player;
 using MEC;
-using PluginAPI.Events;
 
 namespace SnivysCustomRolesAbilities.Abilities
 {
