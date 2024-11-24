@@ -30,11 +30,12 @@ namespace SnivysCustomRolesAbilities.Abilities
             if (player.Role == RoleTypeId.ClassD || player.Role == RoleTypeId.ChaosConscript ||
                 player.Role == RoleTypeId.ChaosMarauder || player.Role == RoleTypeId.ChaosRepressor ||
                 player.Role == RoleTypeId.ChaosRifleman)
-                player.Role.Set(RoleTypeId.NtfSergeant, SpawnReason.ForceClass, RoleSpawnFlags.None);
+                player.Role.Set(RoleTypeId.NtfSergeant, SpawnReason.ForceClass, RoleSpawnFlags.AssignInventory);
             else if (player.Role == RoleTypeId.Scientist || player.Role == RoleTypeId.FacilityGuard ||
                      player.Role == RoleTypeId.NtfCaptain || player.Role == RoleTypeId.NtfPrivate ||
                      player.Role == RoleTypeId.NtfSergeant || player.Role == RoleTypeId.NtfSpecialist)
-                player.Role.Set(RoleTypeId.ChaosRifleman, SpawnReason.ForceClass, RoleSpawnFlags.None);
+                player.Role.Set(RoleTypeId.ChaosRifleman, SpawnReason.ForceClass, RoleSpawnFlags.AssignInventory);
+            
         }
     }
 }
