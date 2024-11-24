@@ -1,5 +1,6 @@
 ﻿using Exiled.API.Features.Attributes;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Exiled.API.Features;
 using Exiled.CustomRoles.API.Features;
 using Exiled.Events.EventArgs.Player;
@@ -15,8 +16,19 @@ namespace SnivysCustomRolesAbilities.Abilities
 
         public override string Description { get; set; } =
             "Handles everything with being disguised";
-        public List<Player> PlayersWithDisguisedEffect = new List<Player>();
         
+        [Description("What should the notification says if the player is a disguised for the CI side")]
+        public string DisguisedCi { get; set; } = "That MTF is actually on the CI side";
+        [Description("What should the notification says if the player is a disguised for the MTF side")]
+        public string DisguisedMtf { get; set; } = "That CI is actually on the MTF side";
+
+        [Description("Should the disguised notifcation be a hint? (True = Hint, False = Broadcast)")]
+        public bool DisguisedHintDisplay { get; set; } = true;
+        
+        [Description("How long should the text displayed to the player should last")]
+        public float DisguisedTextDisplayTime { get; set; } = 5f;
+        
+        public List<Player> PlayersWithDisguisedEffect = new List<Player>();
         protected override void AbilityAdded(Player player)
         {
             PlayersWithDisguisedEffect.Add(player);
@@ -38,19 +50,19 @@ namespace SnivysCustomRolesAbilities.Abilities
             {
                 if (ev.Player.IsNTF && (ev.Attacker.IsCHI || ev.Attacker.Role.Type == RoleTypeId.ClassD))
                 {
-                    if (Plugin.Instance.Config.DisguisedHintDisplay)
-                        ev.Attacker.ShowHint(Plugin.Instance.Config.DisguisedCi, 5);
+                    if (DisguisedHintDisplay)
+                        ev.Attacker.ShowHint(DisguisedCi, DisguisedTextDisplayTime);
                     else
-                        ev.Attacker.Broadcast(new Exiled.API.Features.Broadcast(Plugin.Instance.Config.DisguisedCi, 5));
+                        ev.Attacker.Broadcast(new Exiled.API.Features.Broadcast(DisguisedCi, (ushort)DisguisedTextDisplayTime));
                     ev.IsAllowed = false;
                 }
                 else if (ev.Player.IsCHI && (ev.Attacker.IsNTF || ev.Attacker.Role.Type == RoleTypeId.FacilityGuard || 
                                              ev.Attacker.Role.Type == RoleTypeId.Scientist))
                 {
-                    if (Plugin.Instance.Config.DisguisedHintDisplay)
-                        ev.Attacker.ShowHint(Plugin.Instance.Config.DisguisedMtf, 5);
+                    if (DisguisedHintDisplay)
+                        ev.Attacker.ShowHint(DisguisedMtf, DisguisedTextDisplayTime);
                     else
-                        ev.Attacker.Broadcast(new Exiled.API.Features.Broadcast(Plugin.Instance.Config.DisguisedMtf, 5));
+                        ev.Attacker.Broadcast(new Exiled.API.Features.Broadcast(DisguisedMtf, (ushort)DisguisedTextDisplayTime));
                     ev.IsAllowed = false;
                 }
             }
