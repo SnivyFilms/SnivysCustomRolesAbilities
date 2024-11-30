@@ -33,13 +33,13 @@ namespace SnivysCustomRolesAbilities.Abilities
         {
             PlayersWithDisguisedEffect.Add(player);
             Exiled.Events.Handlers.Player.Hurting += OnHurting;
-            Exiled.Events.Handlers.Player.Shooting += OnShooting;
+            Exiled.Events.Handlers.Player.Shot += OnShot;
         }
         protected override void AbilityRemoved(Player player)
         {
             PlayersWithDisguisedEffect.Remove(player);
             Exiled.Events.Handlers.Player.Hurting -= OnHurting;
-            Exiled.Events.Handlers.Player.Shooting -= OnShooting;
+            Exiled.Events.Handlers.Player.Shot -= OnShot;
         }
 
         private void OnHurting(HurtingEventArgs ev)
@@ -68,20 +68,19 @@ namespace SnivysCustomRolesAbilities.Abilities
             }
         }
 
-        private void OnShooting(ShootingEventArgs ev)
+        private void OnShot(ShotEventArgs ev)
         {
             if (PlayersWithDisguisedEffect.Contains(ev.Player))
             {
-                Player target = Player.Get(ev.TargetNetId);
                 if (ev.Player.IsNTF)
                 {
-                    if (target != null && Check(ev.Player) && (target.Role == RoleTypeId.ClassD || target.IsCHI))
-                        ev.IsAllowed = false;
+                    if (ev.Target != null && Check(ev.Player) && (ev.Target.Role == RoleTypeId.ClassD || ev.Target.IsCHI))
+                        ev.CanHurt = false;
                 }
                 else if (ev.Player.IsCHI)
                 {
-                    if (target != null && Check(ev.Player) && (target.Role == RoleTypeId.Scientist || target.IsNTF || target.Role == RoleTypeId.FacilityGuard))
-                        ev.IsAllowed = false;
+                    if (ev.Target != null && Check(ev.Player) && (ev.Target.Role == RoleTypeId.Scientist || ev.Target.IsNTF))
+                        ev.CanHurt = false;
                 }
             }
         }
