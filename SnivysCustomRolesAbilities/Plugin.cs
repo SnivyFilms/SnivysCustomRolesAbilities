@@ -14,8 +14,8 @@ namespace SnivysCustomRolesAbilities
         public override string Name { get; } = "Snivy's Custom Role Abilities";
         public override string Author { get; } = "Vicious Vikki";
         public override string Prefix { get; } = "VVCRAbilities";
-        public override Version Version { get; } = new Version(1, 4, 0);
-        public override Version RequiredExiledVersion { get; } = new Version(9, 0, 0,3);
+        public override Version Version { get; } = new Version(1, 4, 1);
+        public override Version RequiredExiledVersion { get; } = new Version(9, 0, 0,4);
 
         public override void OnEnabled()
         {
