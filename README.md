@@ -2,6 +2,8 @@
 
 This plugin is end of life and as such is no longer getting updates. Please check out [Snivy's Ultimate Plugin Package](https://github.com/SnivyFilms/SnivysUltimatePackage) that contains this plugin, with more updates, along with a lot of other stuff in one plugin file.
 
+----------------
+
 This just contains the list of Custom Role Abilities that my SCP SL server uses. I'm sharing it with everyone else to use.
 
 This contains all the effects from Joker's Custom Roles plugin as well, including some role specific stuff as their own ability (such as Dwarfs being smaller), you can find [Joker's custom roles plugin here](https://github.com/joker-119/CustomRoles) 
